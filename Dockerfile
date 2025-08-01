@@ -4,16 +4,17 @@ FROM python:3.11-slim
 # Define o diretório de trabalho dentro do contêiner.
 WORKDIR /app
 
-# Copia o arquivo de dependências para dentro do contêiner.
+# --- MUDANÇA CRÍTICA ---
+# Copia APENAS o arquivo de dependências primeiro.
 COPY requirements.txt .
 
-# Instala as dependências listadas no requirements.txt.
+# Instala as dependências. Se esta etapa falhar, saberemos imediatamente.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia o resto dos arquivos do seu projeto.
+# Agora, copia o resto dos arquivos do projeto.
 COPY . .
+# --------------------
 
-# --- NOVAS LINHAS ---
 # Dá permissão de execução para o nosso script de inicialização.
 RUN chmod +x /app/start.sh
 
