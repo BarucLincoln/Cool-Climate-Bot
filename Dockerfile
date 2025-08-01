@@ -5,11 +5,9 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # --- MUDANÇA CRÍTICA ---
-# Copia APENAS o arquivo de dependências primeiro.
-COPY requirements.txt .
-
-# Instala as dependências. Se esta etapa falhar, saberemos imediatamente.
-RUN pip install --no-cache-dir -r requirements.txt
+# Instala cada dependência diretamente, sem usar requirements.txt.
+# Isso é mais explícito e à prova de falhas de build.
+RUN pip install --no-cache-dir "python-telegram-bot[job-queue]==21.1.1" python-dotenv==1.0.1 httpx==0.27.0
 
 # Agora, copia o resto dos arquivos do projeto.
 COPY . .
