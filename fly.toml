@@ -1,7 +1,7 @@
-# fly.toml file generated for cool-climate-bot on 2025-07-31T21:57:00-03:00
+# fly.toml para o Cool Climate Bot com Dockerfile
 
-app = "cool-climate-bot"
+app = "cool-climate-bot" # Verifique se este é o nome correto do seu app na Fly.io
 primary_region = "gru"
 
-[build]
-  builder = "paketobuildpacks/builder:base"
+[processes]
+  app = "python main.py"
