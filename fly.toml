@@ -1,7 +1,10 @@
-# fly.toml para o Cool Climate Bot com Dockerfile
-
-app = "cool-climate-bot" # Verifique se este é o nome correto do seu app na Fly.io
+app = "cool-climate-bot"
 primary_region = "gru"
 
 [processes]
   app = "python main.py"
+
+# --- ADICIONE ESTA SEÇÃO ---
+[mounts]
+  source = "coolclimate_data"
+  destination = "/app/data"

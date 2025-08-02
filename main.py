@@ -13,7 +13,8 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 load_dotenv( )
 TOKEN_TELEGRAM = os.getenv("TOKEN_TELEGRAM")
 API_HG = os.getenv("API_HG")
-ARQUIVO_USUARIOS = 'usuarios.json'
+# --- ALTERE ESTA LINHA ---
+ARQUIVO_DADOS = '/app/data/usuarios.json'
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
